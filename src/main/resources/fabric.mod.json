@@ -3,8 +3,8 @@
   "id": "modid",
   "version": "${version}",
 
-  "name": "Example Mod",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "name": "MC Server Description",
+  "description": "Updates the server's MOTD with the day count, time of day, and weather.",
   "authors": [
     "Me!"
   ],
@@ -19,12 +19,9 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.fabricmc.example.ExampleMod"
+      "dev.nincodedo.mcserverdescption.McServerDescription"
     ]
   },
-  "mixins": [
-    "modid.mixins.json"
-  ],
 
   "depends": {
     "fabricloader": ">=0.11.3",
