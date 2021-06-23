@@ -40,8 +40,13 @@ public class McServerDescription implements ModInitializer {
     long currentTime = serverTimeOfDay % 24000;
     int hour = (int) (currentTime / 1000 + 6);
     int minute = (int) (currentTime % 1000 * 60 / 1000);
-    String ampm = hour >= 12 ? "PM" : "AM";
-    hour = hour >= 12 ? hour - 12 : hour;
+    String ampm = hour > 12 && hour <= 23 ? "PM" : "AM";
+    if (hour == 0 || hour == 24) {
+      hour = 12;
+    }
+    if (hour != 12) {
+      hour = hour % 12;
+    }
     return hour + ":" + String.format("%02d", minute) + " " + ampm;
   }
 
