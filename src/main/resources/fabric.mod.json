@@ -9,8 +9,9 @@
     "Me!"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "homepage": "https://twitter.com/nincodedo",
+    "issues": "https://github.com/Nincodedo/mc-server-description/issues",
+    "sources": "https://github.com/Nincodedo/mc-server-description"
   },
 
   "license": "MIT",
@@ -26,7 +27,7 @@
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
-    "minecraft": "1.18.x",
+    "minecraft": ">=1.18.x",
     "java": ">=17"
   }
 }
