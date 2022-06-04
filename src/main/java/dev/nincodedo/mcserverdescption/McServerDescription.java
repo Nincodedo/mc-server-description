@@ -2,7 +2,7 @@ package dev.nincodedo.mcserverdescption;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
@@ -29,7 +29,7 @@ public class McServerDescription implements ModInitializer {
                             + "Weather: "
                             + weatherStatus;
 
-                    server.getServerMetadata().setDescription(new LiteralText(stringBuilder));
+                    server.getServerMetadata().setDescription(Text.literal(stringBuilder));
                 }
             }
         });
