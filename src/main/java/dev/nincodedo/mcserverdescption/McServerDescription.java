@@ -2,7 +2,6 @@ package dev.nincodedo.mcserverdescption;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
-import net.minecraft.text.Text;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
@@ -13,6 +12,9 @@ public class McServerDescription implements ModInitializer {
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             if (server.isRemote()) {
                 String motd = server.getServerMotd();
+                if (motd != null && motd.contains("\n§fCurrent Day: ")) {
+                    motd = motd.substring(0, motd.indexOf("\n§fCurrent Day: "));
+                }
                 World overworld = server.getOverworld();
                 if (overworld != null) {
                     long dayCount = overworld.getTimeOfDay() / 24000;
@@ -29,7 +31,7 @@ public class McServerDescription implements ModInitializer {
                             + "Weather: "
                             + weatherStatus;
 
-                    server.getServerMetadata().setDescription(Text.literal(stringBuilder));
+                    server.setMotd(stringBuilder);
                 }
             }
         });
