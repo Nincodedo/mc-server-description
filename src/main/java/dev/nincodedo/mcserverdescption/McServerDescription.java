@@ -9,14 +9,19 @@ import java.util.Properties;
 
 public class McServerDescription implements ModInitializer {
 
+    private Properties properties;
+
     @Override
     public void onInitialize() {
         Config.createConfig();
+        properties = Config.getConfigProperties();
+        String descriptionTemplate = properties.getProperty("description");
+        String descriptionTemplateStart = descriptionTemplate.substring(0, descriptionTemplate.indexOf("{"));
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             if (server.isRemote()) {
                 String motd = server.getServerMotd();
-                if (motd != null && motd.contains("\n§fCurrent Day: ")) {
-                    motd = motd.substring(0, motd.indexOf("\n§fCurrent Day: "));
+                if (motd != null && motd.contains("\n" + descriptionTemplateStart)) {
+                    motd = motd.substring(0, motd.indexOf("\n" + descriptionTemplateStart));
                 }
                 World overworld = server.getOverworld();
                 if (overworld != null) {
@@ -24,7 +29,7 @@ public class McServerDescription implements ModInitializer {
                     String timeString = getTimeString(overworld.getTimeOfDay());
                     String weatherStatus = getWeatherStatus(overworld.isRaining(), overworld.isThundering());
 
-                    String stringBuilder = Config.getServerDescription();
+                    String stringBuilder = descriptionTemplate;
                     stringBuilder = stringBuilder.replace("{dayCount}", String.valueOf(dayCount));
                     stringBuilder = stringBuilder.replace("{timeString}", timeString);
                     stringBuilder = stringBuilder.replace("{weatherStatus}", weatherStatus);
@@ -52,7 +57,7 @@ public class McServerDescription implements ModInitializer {
     }
 
     private String getWeatherStatus(boolean isRaining, boolean isThundering) {
-        Properties weather = Config.getConfigProperties();
-        return isThundering ? weather.getProperty("thundering") : isRaining ? weather.getProperty("raining") : weather.getProperty("clear");
+        return isThundering ? properties.getProperty("thundering") : isRaining ? properties.getProperty("raining") :
+                properties.getProperty("clear");
     }
 }
