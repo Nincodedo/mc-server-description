@@ -52,7 +52,6 @@ public class McServerDescription implements ModInitializer {
     }
 
     private String getWeatherStatus(boolean isRaining, boolean isThundering) {
-        //return isThundering ? "Thundering" : isRaining ? "Raining" : "Clear";
         Properties weather = Config.getConfigProperties();
         return isThundering ? weather.getProperty("thundering") : isRaining ? weather.getProperty("raining") : weather.getProperty("clear");
     }

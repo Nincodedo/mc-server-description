@@ -15,7 +15,6 @@ public class Config {
                 writeDefault();
             }
         } catch (IOException e) {
-
             e.printStackTrace();
         }
     }
@@ -30,7 +29,6 @@ public class Config {
             configWriter.write("clear=Clear\n");
             configWriter.close();
         } catch (IOException e) {
-
             e.printStackTrace();
         }
     }
@@ -54,7 +52,6 @@ public class Config {
         try {
             properties.load(Files.newInputStream(FabricLoader.getInstance().getConfigDir().resolve("mcserverdescription.properties")));
         } catch (IOException e) {
-
             e.printStackTrace();
         }
         return properties;
