@@ -6,7 +6,8 @@
   "name": "MC Server Description",
   "description": "Updates the server's MOTD with the day count, time of day, and weather.",
   "authors": [
-    "Nincodedo"
+    "Nincodedo",
+    "RazrCraft"
   ],
   "contact": {
     "homepage": "https://ocw.social/@nincodedo",
@@ -27,7 +28,7 @@
   "depends": {
     "fabricloader": ">=0.14.21",
     "fabric": "*",
-    "minecraft": ">=1.20-beta.6",
+    "minecraft": ">=1.20.1",
     "java": ">=17"
   }
 }
