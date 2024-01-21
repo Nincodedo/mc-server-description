@@ -40,6 +40,8 @@ public class Config {
             configWriter.write("thundering=Thundering\n");
             configWriter.write("raining=Raining\n");
             configWriter.write("clear=Clear\n");
+            configWriter.write("# Set use24HourClock to false to use a 12 hour clock\n");
+            configWriter.write("use24HourClock=false\n");
         } catch (IOException e) {
             LOGGER.error("Failed to write default config file.", e);
         }
