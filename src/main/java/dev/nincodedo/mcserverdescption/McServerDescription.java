@@ -48,8 +48,8 @@ public class McServerDescription implements ModInitializer {
         int hour = (int) (currentTime / 1000 + 6);
         int minute = (int) (currentTime % 1000 * 60 / 1000);
         if (use24HourClock) {
-            if (hour == 24) {
-                hour = 0;
+            if (hour >= 24) {
+                hour -= 24;
             }
             return String.format("%02d", hour) + ":" + String.format("%02d", minute);
         } else {
